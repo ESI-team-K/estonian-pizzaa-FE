@@ -4,7 +4,6 @@ import { createStore } from 'vuex'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import DeliveryForm from '@/views/DeliveryForm';
 import HelloWorld from '@/components/HelloWorld';
-import naive from 'naive-ui'
 
 const app = createApp(App);
 
@@ -36,6 +35,5 @@ const router = createRouter({
 
 app.use(router);
 app.use(store);
-app.use(naive);
 
 app.mount('#app')
