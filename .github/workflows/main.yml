@@ -1,5 +1,4 @@
 name: Vue APP
- 
 on:
   push:
     branches: [ main ]
