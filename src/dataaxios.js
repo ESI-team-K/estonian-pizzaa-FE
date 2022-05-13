@@ -12,7 +12,7 @@ class dataaxios {
     
     async cancelOrder(id) {
         const [firstResponse, secondResponse] = await Promise.all([
-            http.put('/order/' + id + '/cancel'),
+            http.put('/order/' + id + '/cancel/'),
             http.put('/order/' + id + '/cancel/approve')
           ]);
         return [firstResponse, secondResponse]
@@ -20,7 +20,7 @@ class dataaxios {
     
     async cancelAndRefundOrder(id) {
         const [firstResponse, secondResponse] = await Promise.all([
-            http.put('/order/' + id + '/cancel'),
+            http.put('/order/' + id + '/cancel/'),
             http.put('/order/' + id + '/cancel/approve')
           ]);
         return [firstResponse, secondResponse]
