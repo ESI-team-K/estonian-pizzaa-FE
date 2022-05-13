@@ -1,7 +1,9 @@
 import http from "@/http-axios";
 
 class dataaxios {
-
+    getMenu() {
+        return http.get("/menu");
+    }
     getAllOrders() {
         return http.get("/orderList");
     }
