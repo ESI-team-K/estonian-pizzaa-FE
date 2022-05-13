@@ -4,6 +4,7 @@ import { createStore } from 'vuex'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import DeliveryForm from '@/views/DeliveryForm';
 import HelloWorld from '@/components/HelloWorld';
+import Orders from "@/views/OrderList";
 
 const app = createApp(App);
 
@@ -24,6 +25,7 @@ const store = createStore({
 const routes = [
   { path: '/', component: HelloWorld },
   { path: '/deliveryform', component: DeliveryForm },
+  { path: '/orderslist', component: Orders },
 ]
 
 
