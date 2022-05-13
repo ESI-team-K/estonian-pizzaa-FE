@@ -26,5 +26,12 @@ class dataaxios {
         return [firstResponse, secondResponse]
         // TODO: Also refund..?
     }
+
+    getAllNotifications() {
+        return http.get("/notifications");    
+    }
+    getUserNotifications(id) {
+        return http.get(`/notifications/user/${id}`);    
+    }
 }
 export default new dataaxios();
