@@ -1,14 +1,18 @@
 <template>
   <p>
     <router-link to="/deliveryform">Delivery Form</router-link>
+    <router-link to="/orderslist">Orders List</router-link>
   </p>
+  <!-- route outlet -->
+  <!-- component matched by the route will render here -->
+  <router-view></router-view> <!-- TODO: Remove/alter this line when auth is properly implemented -->
 
   <div id="app">
-      <Navi />
+      <navi/>
     
     <div class="home-wrapper">
       <div class="home-inner">
-        <Login />
+        <Login/>
       </div>
     </div>
   </div>
@@ -92,7 +96,5 @@ export default {
     line-height: 1;
     padding-bottom: 20px;
   }
-
-
 
 </style>
