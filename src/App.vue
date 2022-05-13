@@ -2,6 +2,7 @@
   <p>
     <router-link to="/deliveryform">Delivery Form</router-link>
     <router-link to="/orderslist">Orders List</router-link>
+    <router-link to="/menu">Menu</router-link>
   </p>
   <!-- route outlet -->
   <!-- component matched by the route will render here -->
