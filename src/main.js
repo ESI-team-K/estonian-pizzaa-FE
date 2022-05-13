@@ -6,7 +6,8 @@ import DeliveryForm from '@/views/DeliveryForm';
 import Orders from "@/views/OrderList";
 import Notifications from "@/views/NotificationList";
 import Menu from "@/views/Menu";
-
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 const app = createApp(App);
 
 // Create a new store instance.
