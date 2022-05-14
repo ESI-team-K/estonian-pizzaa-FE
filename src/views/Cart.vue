@@ -20,7 +20,7 @@
         <input type="radio" v-model="orderType" value="2"> Delivery<br>
 
 
-    <button class="btn btn-success" v-on:click="makeOrder()">Continue to Payment</button>
+    <button class="btn btn-success" v-on:click="continueToPayment()">Continue to Payment</button>
 </div>
 </template>
 <script>
