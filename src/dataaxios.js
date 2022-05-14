@@ -16,10 +16,19 @@ class dataaxios {
     createOrder(menuItemArray) {
         return http.post('/order/create', menuItemArray);
     }
-    
+
     sendCancelReq(id) {
         return http.put('/order/' + id + '/cancel/');
     }
+
+    createDelivery(id, deliveryForm) {
+        return http.post('/order/' + id + '/delivery/', deliveryForm);
+    }
+
+    payByCard(id, paymentForm) {
+        return http.post('/api/payment/' + id + '/pay/card', paymentForm);
+    }
+
 
     async cancelOrder(id) {
         const firstResponse = await http.put('/order/' + id + '/cancel/');
@@ -59,6 +68,18 @@ class dataaxios {
     }
     getUserNotifications(id) {
         return http.get(`/notifications/user/${id}`);    
+    }
+
+    createInvoice(cart) {
+        return http.post('/api/payment/create', cart);
+    }
+
+    payByCash(id) {
+        return http.put(`/api/payment/${id}/pay/cash`);
+    }
+
+    markReadyForDelivery(orderId) {
+        return http.put(`/order/${orderId}/readyForDelivery`);
     }
 }
 export default new dataaxios();

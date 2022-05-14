@@ -28,7 +28,6 @@ export default {
       menuItemList: null,
       cart: []
   }
-  
 },
 mounted() {
     if (localStorage.getItem('cart')) {

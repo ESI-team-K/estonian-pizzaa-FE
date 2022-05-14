@@ -94,8 +94,15 @@ methods: {
             });
     },
     markForDelivery(orderId) {
-        // TODO: Mark the order ready for delivery
-        orderId;
+        dataaxios.markReadyForDelivery(orderId)
+            .then(response => {
+                //alert("Order with id " + orderId + " has been marked for delivery.")
+                console.log(response)
+                this.fetchOrders();
+            })
+            .catch(e => {
+            console.log(e);
+            });
     }
 },
 

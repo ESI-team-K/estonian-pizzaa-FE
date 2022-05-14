@@ -1,19 +1,9 @@
 <template>
-  <br>
-  <br>
-  <br>
-  <!-- route outlet -->
-  <!-- component matched by the route will render here -->
-  <router-view></router-view> <!-- TODO: Remove/alter this line when auth is properly implemented -->
-
   <div id="app">
       <navi/>
-    
-    <div class="home-wrapper">
-      <div class="home-inner">
-        <Login/>
-      </div>
-    </div>
+    <!-- route outlet -->
+    <!-- component matched by the route will render here -->
+    <router-view></router-view> <!-- TODO: Remove/alter this line when auth is properly implemented -->
   </div>
   
 
@@ -21,13 +11,11 @@
 
 <script>
 import Navi from '@/components/Navi';
-import Login from '@/components/Login';
 
 export default {
   name: 'App',
     components: {
       Navi,
-      Login
     }
 }
 

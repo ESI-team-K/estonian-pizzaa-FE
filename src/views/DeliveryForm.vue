@@ -37,8 +37,6 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
-
 export default {
   name: "DeliveryForm",
   data() {
@@ -52,16 +50,8 @@ export default {
   },
   methods: {
     submitForm() {
-      // axios submit form
-      axios.post('/api/delivery', this.form)
-      .then(response => {
-            console.log(response);
-          }
-      )
-      .catch(error => {
-            console.log(error);
-          }
-      );
+      localStorage.setItem('deliveryForm', JSON.stringify(this.form));
+      this.$router.push({path: '/paymentform'});
     }
   }
 }
