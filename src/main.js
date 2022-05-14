@@ -4,6 +4,7 @@ import { createStore } from 'vuex'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import DeliveryForm from '@/views/DeliveryForm';
 import Orders from "@/views/OrderList";
+import Order from "@/views/Order";
 import Notifications from "@/views/NotificationList";
 import DeliveryList from "@/views/DeliveryList";
 import Menu from "@/views/Menu";
@@ -41,6 +42,7 @@ const store = createStore({
 const routes = [
   { path: '/deliveryform', component: DeliveryForm },
   { path: '/orderslist', component: Orders },
+  { path: '/order/:id', component: Order },
   { path: '/notifications', component: Notifications},
   { path: '/delivery', component: DeliveryList},
   { path: '/menu', component: Menu },

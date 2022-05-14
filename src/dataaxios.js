@@ -7,7 +7,9 @@ class dataaxios {
     getAllOrders() {
         return http.get("/orderList");
     }
-    
+    getOrder(id) {
+        return http.get("/order/" + id + "/");
+    }
     confirmOrder(id) {
         return http.put('/order/' + id + '/confirm');
     }
@@ -15,19 +17,19 @@ class dataaxios {
         return http.post('/order/create', menuItemArray);
     }
     
+    sendCancelReq(id) {
+        return http.put('/order/' + id + '/cancel/');
+    }
+
     async cancelOrder(id) {
-        const [firstResponse, secondResponse] = await Promise.all([
-            http.put('/order/' + id + '/cancel/'),
-            http.put('/order/' + id + '/cancel/approve')
-          ]);
+        const firstResponse = await http.put('/order/' + id + '/cancel/');
+        const secondResponse = http.put('/order/' + id + '/cancel/approve');
         return [firstResponse, secondResponse]
     }
     
     async cancelAndRefundOrder(id) {
-        const [firstResponse, secondResponse] = await Promise.all([
-            http.put('/order/' + id + '/cancel/'),
-            http.put('/order/' + id + '/cancel/approve')
-          ]);
+        const firstResponse = await http.put('/order/' + id + '/cancel/');
+        const secondResponse = http.put('/order/' + id + '/cancel/approve');
         return [firstResponse, secondResponse]
         // TODO: Also refund..?
     }
