@@ -1,6 +1,7 @@
 <script>
 import dataaxios from "../dataaxios";
 import moment from "moment";
+import { orderBy } from "lodash";
 export default {
   name: "DeliveryList",
   data() {
@@ -18,7 +19,7 @@ export default {
       dataaxios
         .getAllDeliveries()
         .then((response) => {
-          this.deliveries = response.data;
+          this.deliveries = orderBy(response.data, "startDeliveryTime", "desc");
         })
         .catch((e) => {
           console.log(e);
