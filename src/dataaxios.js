@@ -36,13 +36,13 @@ class dataaxios {
         return http.post(`/order/${id}/delivery`);
     }
     updateDeliveryDispatched(id) {
-        return http.post(`/order/${id}/outForDelivery`);
+        return http.put(`/order/${id}/outForDelivery`);
     }
     updateDeliveryDelivered(id) {
-        return http.post(`/order/${id}/delivered`);
+        return http.put(`/order/${id}/delivered`);
     }
     updateDeliveryRejected(id) {
-        return http.post(`/order/${id}/rejectDelivery`);
+        return http.put(`/order/${id}/rejectDelivery`);
     }
 
     getDelivery(id){

@@ -26,6 +26,9 @@
               </a>
           </li>
           <li class="nav-item">
+            <a href="#/delivery" class="nav-link"> My Delivery </a> <!-- TODO: Only show this button to driver -->
+          </li>
+          <li class="nav-item">
             <div class="dropdown">
               <a
                 class="nav-link"
@@ -49,7 +52,6 @@
 </template>
 
 <script>
-// var x;
 import Notifications from "@/views/NotificationMini";
 import { library } from '@fortawesome/fontawesome-svg-core'
 

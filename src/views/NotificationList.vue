@@ -38,7 +38,6 @@ export default {
   },
   computed: {
     total() {
-      // `this` points to the component instance
       return this.notification.length;
     },
   },

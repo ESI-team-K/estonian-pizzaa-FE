@@ -26,9 +26,42 @@ export default {
     },
     fetchMyDelivery() {
       dataaxios
-        .getDelivery(1)
+        .getDelivery(this.deliveryId)
         .then((response) => {
-          this.deliveries = response.data;
+          this.deliveries = [response.data];
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    deliveryDispatched(orderId) {
+      dataaxios
+        .updateDeliveryDispatched(orderId)
+        .then((_) => {
+          this.fetchAllDeliveries();
+          console.log(_);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    deliveryDelivered(orderId) {
+      dataaxios
+        .updateDeliveryDelivered(orderId)
+        .then((_) => {
+          this.fetchAllDeliveries();
+          console.log(_);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    deliveryRejected(orderId) {
+      dataaxios
+        .updateDeliveryRejected(orderId)
+        .then((_) => {
+          this.fetchAllDeliveries();
+          console.log(_);
         })
         .catch((e) => {
           console.log(e);
@@ -41,7 +74,6 @@ export default {
   },
   computed: {
     total() {
-      // `this` points to the component instance
       return this.deliveries.length;
     },
   },
@@ -95,9 +127,33 @@ export default {
             >
           </div>
           <div class="col-sm-4">
-              Status<br/>
-              <h3>{{ item.status }}</h3>
-              <button type="button" class="btn btn-primary mt-2">Action</button>
+            Status<br />
+            <h3>{{ item.status }}</h3>
+
+            <button
+              type="button"
+              class="btn btn-primary m2"
+              v-if="item.status == 'READY'"
+              v-on:click="deliveryDispatched(item.orderId)"
+            >
+              Dispatch
+            </button>
+            <button
+              type="button"
+              class="btn btn-success m-2"
+              v-if="item.status == 'DISPATCHED'"
+              v-on:click="deliveryDelivered(item.orderId)"
+            >
+              Success
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger m-2"
+              v-if="item.status == 'READY'||item.status == 'DISPATCHED'"
+              v-on:click="deliveryRejected(item.orderId)"
+            >
+              Reject
+            </button>
           </div>
         </div>
       </div>
