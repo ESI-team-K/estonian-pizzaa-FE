@@ -12,7 +12,7 @@
         <span> Ingredients: {{menuItem.ingredients}}</span><br>
         
         <!-- buttons -->
-        <button class="btn-success" v-on:click="addToCart(menuItem.id)">Add to Cart</button>
+        <button class="btn btn-success" v-on:click="addToCart(menuItem)">Add to Cart</button>
     </li>
     </ul>
 </div>
@@ -25,21 +25,39 @@ export default {
   },
   data: function() {
   return {
-      menuItemList: null
+      menuItemList: null,
+      cart: []
   }
   
+},
+mounted() {
+    if (localStorage.getItem('cart')) {
+        try {
+            this.cart = JSON.parse(localStorage.getItem('cart'));
+        } catch(e) {
+            localStorage.removeItem('cart');
+        }
+    }
 },
 methods: {
     fetchMenu() {
         dataaxios.getMenu()
             .then(response => {
                 this.menuItemList = response.data;
-                console.log(this.menuItemList);
             })
             .catch(e => {
             console.log(e);
             });
     },
+    addToCart(menuItem) {
+        this.cart.push(menuItem);
+        this.saveCart();
+    },
+    saveCart() {
+        const parsed = JSON.stringify(this.cart);
+        localStorage.setItem('cart', parsed);
+    },
+    
 },
 
 created(){
@@ -53,7 +71,6 @@ created(){
 
 
 #menu-item-list{
-background: #f3f3f3;
 box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
 margin-bottom: 30px;
 padding: 10px 20px;
@@ -68,8 +85,9 @@ display: grid;
 margin-right: 10px;
 margin-top: 10px;
 padding: 20px;
-background: rgba(255,255,255,0.7);
+background: #f3f3f3;
 text-align: inherit;
+border-radius:20px;
 }
 .buttons ul{
     text-align: center;

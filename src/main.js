@@ -6,6 +6,7 @@ import DeliveryForm from '@/views/DeliveryForm';
 import Orders from "@/views/OrderList";
 import Notifications from "@/views/NotificationList";
 import Menu from "@/views/Menu";
+import Cart from "@/views/Cart";
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 /* import the fontawesome core */
@@ -41,6 +42,7 @@ const routes = [
   { path: '/orderslist', component: Orders },
   { path: '/notifications', component: Notifications},
   { path: '/menu', component: Menu },
+  { path: '/cart', component: Cart },
 ]
 
 

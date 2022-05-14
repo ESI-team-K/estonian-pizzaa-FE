@@ -11,6 +11,21 @@
             <a href="#" class="nav-link">Sign up</a>
           </li>
           <li class="nav-item">
+            <a href="#/orderslist" class="nav-link"> All Orders </a> <!-- TODO: Only show this button to kitchen -->
+          </li>
+          <li class="nav-item">
+            <a href="#/menu" class="nav-link">Menu</a> <!-- TODO: Only show this button to customers -->
+          </li>
+          <li class="nav-item">
+              <a
+                href="#/cart"
+                class="nav-link"
+                type="button"
+              >
+                <font-awesome-icon icon="cart-shopping" /> <!-- TODO: Only show this button to customers -->
+              </a>
+          </li>
+          <li class="nav-item">
             <div class="dropdown">
               <a
                 class="nav-link"
@@ -20,7 +35,7 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Notifications <font-awesome-icon icon="bell" />
+                <font-awesome-icon icon="bell" />
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <Notifications />
@@ -39,13 +54,15 @@ import Notifications from "@/views/NotificationMini";
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 /* import specific icons */
-import { faBell}from '@fortawesome/free-solid-svg-icons'
+import { faBell } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* add icons to the library */
 library.add(faBell)
+library.add(faShoppingCart)
 
 export default {
   name: "NaviPage",

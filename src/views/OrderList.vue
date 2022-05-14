@@ -104,7 +104,6 @@ created(){
 
 
 #orders-list{
-background: #f3f3f3;
 box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
 margin-bottom: 30px;
 padding: 10px 20px;
@@ -119,7 +118,7 @@ display: block;
 margin-right: 10px;
 margin-top: 10px;
 padding: 20px;
-background: rgba(255,255,255,0.7);
+background: #f3f3f3;
 text-align: left;
 }
 .red{
