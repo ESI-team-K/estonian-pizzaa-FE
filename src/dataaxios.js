@@ -50,6 +50,9 @@ class dataaxios {
     getDelivery(id){
         return http.get(`/delivery/${id}`);  
     }
+    getDriverDeliveries(id){
+        return http.get(`/deliveries/driver/${id}`);  
+    }
     getAllDeliveries() {
         return http.get("/deliveries");    
     }
@@ -60,5 +63,15 @@ class dataaxios {
     getUserNotifications(id) {
         return http.get(`/notifications/user/${id}`);    
     }
+    getDriver(id) {
+        return http.get(`/api/drivers/${id}`);
+    }
+    updateDriverAvailable(id) {
+        return http.put(`/api/driver/${id}/available`);
+    }
+    updateDriverBusy(id) {
+        return http.put(`/api/driver/${id}/busy`);
+    }
+
 }
 export default new dataaxios();
