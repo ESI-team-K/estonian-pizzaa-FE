@@ -1,15 +1,18 @@
 <script>
+import Driver from "@/components/Driver";
 import dataaxios from "../dataaxios";
 import moment from "moment";
 import { orderBy } from "lodash";
 export default {
   name: "DeliveryList",
+  components: {Driver},
   data() {
     return {
       deliveries: [],
-      userId: 0, //TODO: get current user id
+      userId: 1, //TODO: get current user id
       orderId: 1, //TODO: show 1, or delivery history if have time
       deliveryId: 1,
+      driverInfo: null,
     };
   },
 
@@ -20,6 +23,16 @@ export default {
         .getAllDeliveries()
         .then((response) => {
           this.deliveries = orderBy(response.data, "startDeliveryTime", "desc");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    fetchMyDeliveries() {
+      dataaxios
+        .getDriverDeliveries(this.userId)
+        .then((response) => {
+          this.deliveries = response.data;
         })
         .catch((e) => {
           console.log(e);
@@ -79,8 +92,8 @@ export default {
     },
   },
   created() {
-    this.fetchAllDeliveries();
-    //this.fetchMyDelivery()
+    //this.fetchAllDeliveries();
+    this.fetchMyDeliveries()
   },
 };
 </script>
@@ -99,6 +112,7 @@ export default {
     } -->
 <template>
   <div class="container" style="text-align: left">
+  <Driver/>
     <h1>Deliveries</h1>
     <div
       class="card"
@@ -150,7 +164,7 @@ export default {
             <button
               type="button"
               class="btn btn-danger m-2"
-              v-if="item.status == 'READY'||item.status == 'DISPATCHED'"
+              v-if="item.status == 'READY' || item.status == 'DISPATCHED'"
               v-on:click="deliveryRejected(item.orderId)"
             >
               Reject
