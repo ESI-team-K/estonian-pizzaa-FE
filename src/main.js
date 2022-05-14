@@ -6,6 +6,7 @@ import DeliveryForm from '@/views/DeliveryForm';
 import Orders from "@/views/OrderList";
 import Order from "@/views/Order";
 import Notifications from "@/views/NotificationList";
+import DeliveryList from "@/views/DeliveryList";
 import Menu from "@/views/Menu";
 import Cart from "@/views/Cart";
 import 'bootstrap'
@@ -43,6 +44,7 @@ const routes = [
   { path: '/orderslist', component: Orders },
   { path: '/order/:id', component: Order },
   { path: '/notifications', component: Notifications},
+  { path: '/delivery', component: DeliveryList},
   { path: '/menu', component: Menu },
   { path: '/cart', component: Cart },
 ]

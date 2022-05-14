@@ -34,6 +34,26 @@ class dataaxios {
         // TODO: Also refund..?
     }
 
+    deliveryOrder(id) {
+        return http.post(`/order/${id}/delivery`);
+    }
+    updateDeliveryDispatched(id) {
+        return http.put(`/order/${id}/outForDelivery`);
+    }
+    updateDeliveryDelivered(id) {
+        return http.put(`/order/${id}/delivered`);
+    }
+    updateDeliveryRejected(id) {
+        return http.put(`/order/${id}/rejectDelivery`);
+    }
+
+    getDelivery(id){
+        return http.get(`/delivery/${id}`);  
+    }
+    getAllDeliveries() {
+        return http.get("/deliveries");    
+    }
+
     getAllNotifications() {
         return http.get("/notifications");    
     }
