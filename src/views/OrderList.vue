@@ -4,7 +4,7 @@
         <h1>Orders List</h1>
       </div>
     <ul>
-    <li class="item" v-for= "order in ordersList" :key="order.orderId">
+    <li class="item" v-for= "order in orderedOrdersList" :key="order.orderId">
         <span class="id"> <b>Order #{{order.orderId}}</b></span><br>
 
         <!-- cart -->
@@ -34,6 +34,7 @@
 </template>
 <script>
 import dataaxios from "../dataaxios";
+import { orderBy } from 'lodash';
 export default {
   name: "OrdersList",
     components: {
@@ -43,6 +44,11 @@ export default {
       ordersList: null
   }
   
+},
+computed: {
+  orderedOrdersList: function () {
+    return orderBy(this.ordersList, 'startDate', 'desc')
+  }
 },
 methods: {
     fetchOrders() {
