@@ -5,6 +5,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import DeliveryForm from '@/views/DeliveryForm';
 import Orders from "@/views/OrderList";
 import Notifications from "@/views/NotificationList";
+import DeliveryList from "@/views/DeliveryList";
 import Menu from "@/views/Menu";
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -40,6 +41,7 @@ const routes = [
   { path: '/deliveryform', component: DeliveryForm },
   { path: '/orderslist', component: Orders },
   { path: '/notifications', component: Notifications},
+  { path: '/delivery', component: DeliveryList},
   { path: '/menu', component: Menu },
 ]
 
