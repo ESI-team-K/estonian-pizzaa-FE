@@ -11,6 +11,9 @@ class dataaxios {
     confirmOrder(id) {
         return http.put('/order/' + id + '/confirm');
     }
+    createOrder(menuItemArray) {
+        return http.post('/order/create', menuItemArray);
+    }
     
     async cancelOrder(id) {
         const [firstResponse, secondResponse] = await Promise.all([

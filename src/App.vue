@@ -1,9 +1,7 @@
 <template>
-  <p>
-    <router-link to="/deliveryform">Delivery Form</router-link>
-    <router-link to="/orderslist">Orders List</router-link>
-    <router-link to="/menu">Menu</router-link>
-  </p>
+  <br>
+  <br>
+  <br>
   <!-- route outlet -->
   <!-- component matched by the route will render here -->
   <router-view></router-view> <!-- TODO: Remove/alter this line when auth is properly implemented -->
