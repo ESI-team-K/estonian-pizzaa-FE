@@ -20,7 +20,7 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Notifications 
+                Notifications <font-awesome-icon icon="bell" />
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <Notifications />
@@ -35,11 +35,23 @@
 
 <script>
 // var x;
-import Notifications from "@/views/NotificationList";
+import Notifications from "@/views/NotificationMini";
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import specific icons */
+import { faBell}from '@fortawesome/free-solid-svg-icons'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* add icons to the library */
+library.add(faBell)
+
 export default {
   name: "NaviPage",
   components: {
     Notifications,
+    FontAwesomeIcon
   },
   data() {
     return { };

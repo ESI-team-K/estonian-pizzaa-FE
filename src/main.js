@@ -8,7 +8,19 @@ import Notifications from "@/views/NotificationList";
 import Menu from "@/views/Menu";
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-const app = createApp(App);
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import specific icons */
+import { faUser } from '@fortawesome/free-regular-svg-icons'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* add icons to the library */
+library.add(faUser)
+
+const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon);
 
 // Create a new store instance.
 const store = createStore({

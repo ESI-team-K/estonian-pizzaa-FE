@@ -35,13 +35,12 @@ export default {
     formatDate(date) {
       return moment(String(date)).format("MMM DD, hh:mm");
     },
-
   },
   computed: {
     total() {
       // `this` points to the component instance
       return this.notification.length;
-    }
+    },
   },
   created() {
     this.fetchMyNotifications();
@@ -51,18 +50,14 @@ export default {
 
 <!-- [ { "id": 1, "userId": 0, "message": "Your have an order to deliver", "notifyDateTime": "2022-05-13T16:51:19.611625Z" } ] -->
 <template>
-<div class="container">
-  <!-- <h1>Notifications</h1> -->
-  <div class="" v-for="item in notification" :key="item.id">
-    <div class="">
-      <div class="">{{ item.message }}</div>
-      <small class="">Sent: {{ this.formatDate(item.notifyDateTime) }}</small>
-      <hr/>
+  <div class="container">
+    <h1>Notifications</h1>
+    <div class="card" v-for="item in notification" :key="item.id">
+      <div class="card-body">
+        <div class="card-title">{{ item.message }}</div>
+        <small class="card-text">Sent: {{ this.formatDate(item.notifyDateTime) }}</small>
+      </div>
     </div>
+    <p>Total: {{ total }}</p>
   </div>
-
-  <!-- <p>Total: {{ total }}</p> -->
-  <a href="#/notifications">Show all</a>
-</div>
-  
 </template>
