@@ -10,6 +10,7 @@
 
         <!-- ingredients -->
         <span> Ingredients: {{menuItem.ingredients}}</span><br>
+        <span> Price: {{menuItem.price}}</span><br>
         
         <!-- buttons -->
         <button class="btn btn-success" v-on:click="addToCart(menuItem)">Add to Cart</button>
