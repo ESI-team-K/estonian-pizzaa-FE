@@ -10,6 +10,7 @@
 
         <!-- ingredients -->
         <span> Ingredients: {{ menuItem.ingredients }}</span><br>
+        <span> Price: {{menuItem.price}}</span><br>
 
         <!-- buttons -->
         <button class="btn btn-danger" v-on:click="removeFromCart(menuItem)">Remove</button>
