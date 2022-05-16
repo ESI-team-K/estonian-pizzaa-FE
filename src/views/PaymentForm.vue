@@ -139,11 +139,13 @@ export default {
       let invoice = await dataaxios.createInvoice(this.cart);
       invoice = invoice.data;
 
+      let expirationm = this.expirationMonth < 10 ? '0' + this.expirationMonth : this.expirationMonth;
+
       if (this.paymentMethod === 'card') {
         await dataaxios.payByCard(invoice.payment.id, {
           cardHolder: this.cardOwner,
           cardNumber: this.validCardNumber,
-          cardExpiration: `${this.expirationMonth}/${this.expirationYear}`,
+          cardExpiration: `${expirationm}/${this.expirationYear}`,
           cardType: 'MASTERCARD',
         });
       } else {
