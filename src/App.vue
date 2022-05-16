@@ -1,9 +1,6 @@
 <template>
   <div id="app">
       <navi/>
-    <!-- route outlet -->
-    <!-- component matched by the route will render here -->
-    <router-view></router-view> <!-- TODO: Remove/alter this line when auth is properly implemented -->
   </div>
   
 
@@ -17,6 +14,7 @@ export default {
     components: {
       Navi,
     }
+  
 }
 
 </script>

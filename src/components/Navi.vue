@@ -1,15 +1,24 @@
 <template>
   <nav class="navbar navbar-expand navbar-light mb-5">
     <div class="container">
-      <a href="#" class="navbar-brand">Home</a>
+      <router-link to="/" class="navbar-brand">Estonian Pizzaa</router-link>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link to="/login" class="nav-link">Login</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/register" class="nav-link">Sign up</router-link>
-          </li>
+          <router-link to="/home" class="nav-link">
+            <font-awesome-icon icon="home" /> Home
+          </router-link>
+        </li>
+        <li v-if="showDriverBoard" class="nav-item">
+          <router-link to="/driver" class="nav-link">Driver Page</router-link>
+        </li>
+        <li v-if="showStaffBoard" class="nav-item">
+          <router-link to="/staff" class="nav-link">Staff Page</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link v-if="currentUser" to="/user" class="nav-link">User Page</router-link>
+        </li>
+
           <li class="nav-item">
             <router-link to="/orderslist" class="nav-link">All orders</router-link> <!-- TODO: Only show this button to kitchen -->
           </li>
@@ -40,9 +49,40 @@
             </div>
           </li>
         </ul>
+
+        <div v-if="!currentUser" class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <router-link to="/register" class="nav-link">
+           <i class="fa-solid fa-user-plus"></i> Register
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/login" class="nav-link">
+             <i class="fa-solid fa-user-lock"></i> Login
+          </router-link>
+        </li>
+      </div>
+
+      <div v-if="currentUser" class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <router-link to="/profile" class="nav-link">
+            <i class="fa-solid fa-user-shield"></i>
+            {{ currentUser.username }}
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-danger text-light" @click.prevent="logOut">
+            <i class="fa-solid fa-circle-xmark"></i> Exit
+          </a>
+        </li>
+      </div>
+
       </div>
     </div>
   </nav>
+  <div class="container">
+      <router-view />
+    </div>
 </template>
 
 <script>
@@ -66,11 +106,34 @@ export default {
     Notifications,
     FontAwesomeIcon
   },
-  data() {
-    return { };
+
+   computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    },
+    showDriverBoard() {
+      if (this.currentUser && this.currentUser['roles']) {
+        return this.currentUser['roles'].includes('ROLE_DRIVER');
+      }
+
+      return false;
+    },
+    showStaffBoard() {
+      if (this.currentUser && this.currentUser['roles']) {
+        return this.currentUser['roles'].includes('ROLE_STAFF');
+      }
+
+      return false;
+    }
   },
-  created() {
-    
-  },
+  methods: {
+    logOut() {
+      this.$store.dispatch('auth/logout');
+      this.$router.push('/login');
+    }
+  }
+
+ 
+
 };
 </script>
