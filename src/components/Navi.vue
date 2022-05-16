@@ -28,7 +28,7 @@
           <li class="nav-item">
             <router-link to="/cart" class="nav-link">Cart</router-link> <!-- TODO: Only show this button to customers -->
           </li>
-          <li class="nav-item">
+          <li v-if="showDriverBoard" class="nav-item">
             <router-link to="/delivery" class="nav-link">My Delivery</router-link> <!-- TODO: Only show this button to driver -->
           </li>
           <li class="nav-item">
