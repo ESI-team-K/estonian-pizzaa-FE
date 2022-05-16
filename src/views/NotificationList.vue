@@ -1,13 +1,14 @@
 <script>
 import dataaxios from "../dataaxios";
+import UserProfile from "@/components/UserProfile";
 import moment from "moment";
 import { orderBy } from "lodash";
 export default {
   name: "NotificationList",
+  extends: UserProfile,
   data() {
     return {
       notification: [],
-      userId: 0, //TODO: get current user id
     };
   },
 
@@ -25,7 +26,7 @@ export default {
     },
     fetchMyNotifications() {
       dataaxios
-        .getUserNotifications(this.userId)
+        .getUserNotifications(this.currentUser.id)
         .then((response) => {
           this.notification = this.newestFirst(response.data);
         })
@@ -46,6 +47,7 @@ export default {
     },
   },
   created() {
+    if (this.currentUser != null)
     this.fetchMyNotifications();
   },
 };

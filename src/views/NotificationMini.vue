@@ -20,6 +20,6 @@ export default {
         <hr />
       </div>
     </div>
-    <a href="#/notifications">View all</a>
+    <a href="/notifications">View all</a>
   </div>
 </template>

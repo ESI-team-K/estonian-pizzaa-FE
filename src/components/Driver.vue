@@ -27,19 +27,20 @@
 </template>
 
 <script>
+import UserProfile from "@/components/UserProfile";
 import dataaxios from "../dataaxios";
 export default {
   name: "DriverInfo",
+  extends: UserProfile,
   data() {
     return {
       driverInfo: null,
-      userId: 1,
     };
   },
   methods: {
     getDriver() {
       dataaxios
-        .getDriver(this.userId)
+        .getDriver(this.currentUser.id)
         .then((response) => {
           this.driverInfo = response.data;
         })

@@ -1,17 +1,16 @@
 <script>
 import Driver from "@/components/Driver";
+import UserProfile from "@/components/UserProfile";
 import dataaxios from "../dataaxios";
 import moment from "moment";
 import { orderBy } from "lodash";
 export default {
   name: "DeliveryList",
+  extends: UserProfile,
   components: {Driver},
   data() {
     return {
       deliveries: [],
-      userId: 1, //TODO: get current user id
-      orderId: 1, //TODO: show 1, or delivery history if have time
-      deliveryId: 1,
       driverInfo: null,
     };
   },
@@ -30,7 +29,7 @@ export default {
     },
     fetchMyDeliveries() {
       dataaxios
-        .getDriverDeliveries(this.userId)
+        .getDriverDeliveries(this.currentUser.id)
         .then((response) => {
           this.deliveries = response.data;
         })
@@ -93,6 +92,7 @@ export default {
   },
   created() {
     //this.fetchAllDeliveries();
+    if (this.currentUser != null)
     this.fetchMyDeliveries()
   },
 };
